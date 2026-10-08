@@ -11,8 +11,7 @@ import java.sql.SQLException;
 public class AnimeService {
 
     public static void Añadir(Anime anime) {
-        // Usamos public.anime e os nomes exactos das columnas na túa BD (descipcion, puntacion)
-        String sql = "INSERT INTO public.anime (nome, descipcion, data, puntacion) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO public.anime (nome, descripcion, data, puntuacion) VALUES (?, ?, ?, ?)";
 
         try (Connection conn = ConexionBD.conexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
@@ -38,9 +37,9 @@ public class AnimeService {
 
             while (resultado.next()) {
                 System.out.println("Nome: " + resultado.getString("nome"));
-                System.out.println("Descipcion: " + resultado.getString("descipcion"));
+                System.out.println("Descripcion: " + resultado.getString("descripcion"));
                 System.out.println("Data: " + resultado.getDate("data"));
-                System.out.println("Puntacion: " + resultado.getString("puntacion"));
+                System.out.println("Puntuacion: " + resultado.getString("puntuacion"));
                 System.out.println("-----------------------------------");
             }
         } catch (SQLException e) {
@@ -58,9 +57,9 @@ public class AnimeService {
             try (ResultSet resultado = ps.executeQuery()) {
                 while (resultado.next()) {
                     System.out.println("Nome: " + resultado.getString("nome"));
-                    System.out.println("Descipcion: " + resultado.getString("descipcion"));
+                    System.out.println("Descripcion: " + resultado.getString("descripcion"));
                     System.out.println("Data: " + resultado.getDate("data"));
-                    System.out.println("Puntacion: " + resultado.getString("puntacion"));
+                    System.out.println("Puntuacion: " + resultado.getString("puntuacion"));
                     System.out.println("-----------------------------------");
                 }
             }
@@ -70,7 +69,7 @@ public class AnimeService {
     }
 
     public static void actualizar(String nomeOrixinal, Anime animeNovo) {
-        String sql = "UPDATE public.anime SET nome = ?, descipcion = ?, data = ?, puntacion = ? WHERE nome = ?";
+        String sql = "UPDATE public.anime SET nome = ?, descripcion = ?, data = ?, puntuacion = ? WHERE nome = ?";
 
         try (Connection conn = ConexionBD.conexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
