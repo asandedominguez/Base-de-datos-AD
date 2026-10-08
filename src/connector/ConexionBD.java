@@ -7,7 +7,6 @@ import java.sql.SQLException;
 public class ConexionBD {
 
     public static Connection conexion() {
-        // Apuntamos a 'probas' que é onde está a táboa en DBeaver
         String url = "jdbc:postgresql://10.0.9.226:5432/probas";
         String usuario = "postgres";
         String contrasena = "admin";

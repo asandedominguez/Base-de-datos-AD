@@ -25,7 +25,6 @@ public class main {
         AnimeService.Añadir(novoAnime);
         AnimeService.leer();
         AnimeService.filtro("Naruto");
-
         Anime animeModificado = new Anime("Naruto Shippuden", "Nova descrición", stringToDate("2007-02-15"), 10);
         AnimeService.actualizar("Naruto", animeModificado);
 
