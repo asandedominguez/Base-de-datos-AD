@@ -19,7 +19,7 @@ public class AnimeService {
             ps.setString(1, anime.getNome());
             ps.setString(2, anime.getDescripcion());
             ps.setDate(3, anime.getData());
-            ps.setString(4, anime.getPuntuacion());
+            ps.setInt(4, anime.getPuntuacion());
             ps.executeUpdate();
             System.out.println("Anime añadido con éxito.");
 
@@ -39,7 +39,7 @@ public class AnimeService {
                 System.out.println("Nome: " + resultado.getString("nome"));
                 System.out.println("Descripcion: " + resultado.getString("descripcion"));
                 System.out.println("Data: " + resultado.getDate("data"));
-                System.out.println("Puntuacion: " + resultado.getString("puntuacion"));
+                System.out.println("Puntuacion: " + resultado.getInt("puntuacion"));
                 System.out.println("-----------------------------------");
             }
         } catch (SQLException e) {
@@ -59,7 +59,7 @@ public class AnimeService {
                     System.out.println("Nome: " + resultado.getString("nome"));
                     System.out.println("Descripcion: " + resultado.getString("descripcion"));
                     System.out.println("Data: " + resultado.getDate("data"));
-                    System.out.println("Puntuacion: " + resultado.getString("puntuacion"));
+                    System.out.println("Puntuacion: " + resultado.getInt("puntuacion"));
                     System.out.println("-----------------------------------");
                 }
             }
@@ -77,7 +77,7 @@ public class AnimeService {
             ps.setString(1, animeNovo.getNome());
             ps.setString(2, animeNovo.getDescripcion());
             ps.setDate(3, animeNovo.getData());
-            ps.setString(4, animeNovo.getPuntuacion());
+            ps.setInt(4, animeNovo.getPuntuacion());
             ps.setString(5, nomeOrixinal);
 
             ps.executeUpdate();
@@ -90,7 +90,6 @@ public class AnimeService {
 
     public static void eliminar(String nome) {
         String sql = "DELETE FROM public.anime WHERE nome = ?";
-
         try (Connection conn = ConexionBD.conexion();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
